@@ -1,0 +1,104 @@
+import { Card, CardContent } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Input } from "@/components/ui/input"
+import { Mail, PhoneCall, Bot } from "lucide-react"
+import { motion } from "framer-motion"
+
+export default function HomePage() {
+  return (
+    <div className="min-h-screen bg-white text-gray-900">
+      {/* HERO SECTION */}
+      <section className="text-center py-20 px-4 max-w-4xl mx-auto">
+        <h1 className="text-5xl font-bold mb-4">Welcome to Task Rebel</h1>
+        <p className="text-xl mb-6">AI-powered automation tailored for every industry.</p>
+        <Button className="text-lg px-6 py-3">Get a Free Demo</Button>
+      </section>
+
+      {/* ABOUT SECTION */}
+      <section className="py-16 px-4 bg-gray-100">
+        <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-8 items-center">
+          <div>
+            <h2 className="text-3xl font-semibold mb-4">Revolutionize Your Workflow</h2>
+            <p className="mb-4">From customer service to healthcare, real estate to logistics — Task Rebel gives you the AI tools to automate chat, phone, SMS, and email tasks so your team can focus on what really matters.</p>
+            <p>Save time, reduce costs, and deliver exceptional service across all channels with one smart platform.</p>
+          </div>
+          <img src="/ai-automation-illustration.png" alt="AI Automation" className="rounded-2xl shadow-lg" />
+        </div>
+      </section>
+
+      {/* INDUSTRY CARDS */}
+      <section className="py-16 px-4">
+        <h2 className="text-3xl font-semibold text-center mb-10">What Can We Automate for You?</h2>
+        <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 max-w-6xl mx-auto">
+          {industries.map((item, index) => (
+            <motion.div whileHover={{ scale: 1.02 }} key={index}>
+              <Card className="h-full">
+                <CardContent className="p-6">
+                  <h3 className="text-xl font-bold mb-2">{item.title}</h3>
+                  <ul className="list-disc list-inside text-sm space-y-1">
+                    {item.tasks.map((task, i) => (
+                      <li key={i}>{task}</li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* CONTACT SECTION */}
+      <section className="bg-gray-900 text-white py-16 px-4 text-center">
+        <h2 className="text-3xl font-bold mb-4">Let’s Talk AI</h2>
+        <p className="mb-8">Ready to automate your business? Book a demo or reach out to our team.</p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button variant="secondary" className="flex gap-2 items-center"><PhoneCall size={18}/> Book a Call</Button>
+          <Button variant="secondary" className="flex gap-2 items-center"><Mail size={18}/> Send an Email</Button>
+        </div>
+      </section>
+    </div>
+  )
+}
+
+const industries = [
+  {
+    title: "Universal AI Tasks",
+    tasks: ["FAQs", "Appointment Scheduling", "Order Confirmations", "Subscription Management", "Lead Qualification"]
+  },
+  {
+    title: "Healthcare / Wellness",
+    tasks: ["Insurance Verification", "Prescription Reminders", "Lab Result Notifications", "Health Tips", "Telehealth Screening"]
+  },
+  {
+    title: "Finance / Insurance",
+    tasks: ["Loan Prequalification", "Document Collection", "Claims Updates", "Budget Alerts", "KYC Checks"]
+  },
+  {
+    title: "Real Estate",
+    tasks: ["Listing Distribution", "Virtual Tours", "Lead Follow-Up", "Rent Reminders", "Escrow Updates"]
+  },
+  {
+    title: "Logistics / Transportation",
+    tasks: ["Tracking Updates", "Missed Delivery Rescheduling", "POD Requests", "Freight Quotes", "Driver Support"]
+  },
+  {
+    title: "Customer Service",
+    tasks: ["Tier 1 Resolution", "Complaint Logging", "SLA Monitoring", "Callback Scheduling", "Escalation Prediction"]
+  },
+  {
+    title: "SaaS / Tech Support",
+    tasks: ["Bug Reports", "API Keys", "Account Setup", "Plan Upgrades", "Password Resets"]
+  },
+  {
+    title: "B2B Sales & Outreach",
+    tasks: ["Cold Emailing", "Demo Booking", "Lead Nurturing", "Proposal Sequences", "Drip Campaigns"]
+  },
+  {
+    title: "Education / Courses",
+    tasks: ["Class Reminders", "Exam Prep Chatbot", "Student Re-engagement", "Certificate Delivery", "Support Ticket Automation"]
+  },
+  {
+    title: "Hospitality / Services",
+    tasks: ["Reservation Confirmations", "Check-In Reminders", "VIP Greetings", "Post-Stay Feedback", "Event Notifications"]
+  }
+]
